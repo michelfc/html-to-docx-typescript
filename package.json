@@ -1,6 +1,6 @@
 {
   "name": "@neurapartner/html-to-docx-typescript",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "HTML to DOCX converter (Typescript)",
   "keywords": [
     "html",
