@@ -15,6 +15,45 @@ Even though there is an instance of html-to-docx running in production, please e
 
 Currently it doesn't work with browser directly, but it was tested against React.
 
+## For Web (ReactJS + Vite)
+
+### Install this dependences on your project.
+```bash
+  npm i --save process
+  npm i --save stream-browserify
+  npm i --save events
+  npm i --save util
+  npm i --save buffer
+  npm i --save http-browserify
+  npm i --save path-browserify
+```
+
+### Adjuste vite.config.ts
+```ts
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react-swc'
+import { resolve } from 'path'
+import process from 'process';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  define: {
+    "process": process,
+  },
+  resolve: {
+    alias: {
+      stream: resolve(__dirname, "node_modules", "stream-browserify"),
+      events: resolve(__dirname, "node_modules", "events"),
+      util: resolve(__dirname, "node_modules", "util"),
+      buffer: resolve(__dirname, "node_modules", "buffer"),
+      http: resolve(__dirname, "node_modules", "http-browserify"),
+      path: resolve(__dirname, "node_modules", "path-browserify"),
+    }
+  }
+})
+```
+
 ## Installation
 
 Use the npm to install foobar.
