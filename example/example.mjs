@@ -1,8 +1,8 @@
 /* eslint-disable no-console */
-const fs = require('fs');
+import fs from 'fs';
 // FIXME: Incase you have the npm package
-// const HTMLtoDOCX = require('html-to-docx');
-const HTMLtoDOCX = require('../dist/html-to-docx.umd');
+// import HTMLtoDOCX from 'html-to-docx';
+import HTMLtoDOCX from '../dist/html-to-docx.esm.js';
 
 const filePath = './example.docx';
 
@@ -73,19 +73,7 @@ const htmlString = `<!DOCTYPE html>
         <ol style="list-style-type: decimal;">
             <li>Ordered list element</li>
         </ol>
-
-        <div class="page-break" style="page-break-before: always">
-        <h2>Page-Break-Before</h2>
-        <p>Section with a page-break-before that should occur before this section is rendered.</p>
-        </div>
-
-        <div class="page-break" style="page-break-after: always">
-        <h2>Page-Break-After</h2>
-        <p>Section with a page-break-after that should occur after. END OF SECTION</p>
-        </div>
-        <div>
-        This content should be on a new page.
-        </div>
+        <div class="page-break" style="page-break-after: always"></div>
         <ul>
             <li>
                 <a href="https://en.wikipedia.org/wiki/Coffee">
@@ -152,7 +140,7 @@ const htmlString = `<!DOCTYPE html>
 
   fs.writeFile(filePath, fileBuffer, (error) => {
     if (error) {
-      console.log('Docx file creation failed', error);
+      console.log('Docx file creation failed');
       return;
     }
     console.log('Docx file created successfully');
